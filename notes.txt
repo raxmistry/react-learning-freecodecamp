@@ -29,5 +29,61 @@ class Kitten extends React.Component {
 - To render a component to the ReactDOM, you include the custom HTML tag, instead of the JSX component:
 	ReactDOM.render(<TypesOfFood />, document.getElementById("challenge-node"))
 
+- De facto standard is to pass values in props var into the JSX functional component.
+- Array must be treated as JS
+- Default props :  MyComponent.defaultProps = { location: 'San Francisco' }
+- Passing properties that are not strings, means you have to wrap them in {}
+
+PropTypes
+- Use PropTypes to specify the props types that are passed in, including whether they are required,  
+- Defined in the same way as default props : MyComponent.propTypes = { handleClick: PropTypes.func.isRequired }
+- Must be imported independently: import React, { PropTypes } from 'react';
+- ES6 Class components access props slightly differently. Use {this.props.someProperty}
+
+Stateless functional component vs Stateless component vs Stateful Component
+- A stateless functional component is any function you write which accepts props and returns JSX. A stateless component, on the other hand, is a class that extends React.Component, but does not use internal state (covered in the next challenge). Finally, a stateful component is any component that does maintain its own internal state. You may see stateful components referred to simply as components or React components.
+
+State in components
+- You create state in a React component by declaring a state property on the component class in its constructor. This initializes the component with state when it is created. The state property must be set to a JavaScript object : 
+
+this.state = {
+  // describe your state here
+  // example:
+  name: "Spongebob Squarepants"
+}
+
+- If you want to access a state value within the return of the render method, you have to enclose the value in curly braces.
+- this.setState({{key: value, anotherKey: someValue}) to change the state of a component from within the component
+
+- Button click example: 
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Initial State'
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // change code below this line
+    this.setState({name: "React Rocks!"});
+    // change code above this line
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};
+
+
+- We have to explicitly bind 'this' to a method in order for 'this' to be accessible in the metohd (see button click example above).
+In addition to setting and updating state, you can also define methods for your component class. A class method typically needs to use the this keyword so it can access properties on the class (such as state and props) inside the scope of the method. There are a few ways to allow your class methods to access this.
+
+One common way is to explicitly bind this in the constructor so this becomes bound to the class methods when the component is initialized. You may have noticed the last challenge used this.handleClick = this.handleClick.bind(this) for its handleClick method in the constructor. Then, when you call a function like this.setState() within your class method, this refers to the class and will not be undefined.
+
+- Must set state with this.setState({blah: newValue})
 - 
- 
