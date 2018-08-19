@@ -8,3 +8,26 @@ React notes
 - ReactDOM offers a simple method to render React elements to the DOM which looks like this: ReactDOM.render(componentToRender, targetNode), where the first argument is the React element or component that you want to render, and the second argument is the DOM node that you want to render the component to.
 - One key difference in JSX is that you can no longer use the word class to define HTML classes. This is because class is a reserved word in JavaScript. Instead, JSX uses className
 - In fact, the naming convention for all HTML attributes and event references in JSX become camelCase. For example, a click event in JSX is onClick, instead of onclick. Likewise, onchange becomes onChange
+- Auto closed tags must have space  e.g. <br />
+- A component - create JS function that _returns_ JSX or null
+- React requires function name to start with a capital letter
+- Example of a React component with ES6 class syntax: 
+
+class Kitten extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <h1>Hi</h1>
+    );
+  }
+}
+
+- To include component as a child, you include component name as a custom HTML tag. e.g. <MyComponent /> 
+- To render a component to the ReactDOM, you include the custom HTML tag, instead of the JSX component:
+	ReactDOM.render(<TypesOfFood />, document.getElementById("challenge-node"))
+
+- 
+ 
