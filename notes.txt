@@ -159,3 +159,62 @@ class MyForm extends React.Component {
     );
   }
 };
+
+
+- Lifecycle methods provide opportunities to perform actions at certain points in the lifecycle of a component.
+Some of the methods are :
+componentWillMount()
+componentDidMount()
+componentWillReceiveProps()
+shouldComponentUpdate()
+componentWillUpdate()
+componentDidUpdate()
+componentWillUnmount()
+
+- The best practice with React is to place API calls or any calls to your server in the lifecycle method componentDidMount(). This method is called after a component is mounted to the DOM. Any calls to setState() here will trigger a re-rendering of your component. When you call an API in this method, and set your state with the data that the API returns, it will automatically trigger an update once you receive the data.
+
+
+- Event Listners
+The componentDidMount() method is also the best place to attach any event listeners you need to add for specific functionality. React provides a synthetic event system which wraps the native event system present in browsers. This means that the synthetic event system behaves exactly the same regardless of the user's browser - even if the native events may behave differently between different browsers.
+
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    };
+    this.handleEnter = this.handleEnter.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+  // change code below this line
+  componentDidMount() {
+    // *** Not sure why this method needs this...
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+  componentWillUnmount() {
+    // *** but this component doesn't need it
+    document.removeEventListener('keydown', this.handleEnter);
+  }
+  // change code above this line
+  handleEnter() {
+    this.setState({
+      message: this.state.message + 'You pressed the enter key! '
+    });
+  }
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.handleEnter();
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.message}</h1>
+      </div>
+    );
+  }
+};
+
+
+
