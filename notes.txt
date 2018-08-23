@@ -216,5 +216,44 @@ class MyComponent extends React.Component {
   }
 };
 
+- Another lifecycle method is componentWillReceiveProps() which is called whenever a component is receiving new props. *** This method receives the new props as an argument ***, which is usually written as nextProps
+- Another method is componentDidUpdate(), and is called immediately after a component re-renders
+- React provides a lifecycle method you can call when child components receive new state or props, and declare specifically if the components should update or not. The method is shouldComponentUpdate(), and it takes nextProps and nextState as parameters. The method must return a boolean value that tells React whether or not to update the component. You can compare the current props (this.props) to the next props (nextProps) to determine if you need to update or not, and return true or false accordingly.
+- 
+shouldComponentUpdate(nextProps, nextState) {
+    console.log('Should I update?');
+    // change code below this line
+     if (nextProps.value%2 == 0) {
+      return true;
+     } else {
+       return false;
+     }
+    
+     // change code above this line
+  }
+
+- Styling elements must be set in a Javascript Object as follows: 
+ <div style={{color: "red", fontSize: 72}} >Big Red</div>
+
+- Hyphenated words like font-size are invalid syntax for JavaScript object properties, so React uses camel case. As a rule, any hyphenated style properties are written using camel case in JSX.
+- All property value length units (like height, width, and fontSize) are assumed to be in px unless otherwise specified. If you want to use em, for example, you wrap the value and the units in quotes, like {fontSize: "4em"}. Other than the length values that default to px, all other property values should be wrapped in quotes.
+
+- Declare styles in a separate Javascript object : 
+const styles = {
+  color: "purple",
+  fontSize: 40,
+  border: "2px solid purple"
+}
+// change code above this line
+class Colorful extends React.Component {
+  render() {
+    // change code below this line
+    return (
+      <div style={styles}>Style Me!</div>
+    );
+    // change code above this line
+  }
+};
+
 
 
