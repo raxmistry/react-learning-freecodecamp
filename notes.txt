@@ -361,3 +361,17 @@ There are two key reasons why rendering on the server may be used in a real worl
 
 
 
+
+
+
+-- React & Webpack
+
+https://www.youtube.com/watch?v=uextYhQGP6k
+
+package.json - npm configs
+npm init
+npm install react react-dom --save (2 main packages)
+(Development dependencies)
+npm install webpack webpack-dev-server babel-loader babel-preset-es2015 babel-preset-react bable-preset-stage-2 --save-dev
+
+
