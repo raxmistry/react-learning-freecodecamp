@@ -372,6 +372,21 @@ package.json - npm configs
 npm init
 npm install react react-dom --save (2 main packages)
 (Development dependencies)
-npm install webpack webpack-dev-server babel-loader babel-preset-es2015 babel-preset-react bable-preset-stage-2 --save-dev
 
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "npm": "^6.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+
+
+
+babelrc needs different presets
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
 
